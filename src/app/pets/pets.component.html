@@ -1,0 +1,87 @@
+<!-- filtriranje -->
+<div class="row align-items-center">
+  <div class="col-4">
+    <!-- category -->
+    <label class="col-sm-2 col-form-label" for="inlineFormCustomSelect"
+      >Category:
+    </label>
+    <select
+      class="form-select"
+      id="inlineFormCustomSelect"
+      name="categorySelect"
+      [(ngModel)]="params.filter.category"
+      (change)="getPets()"
+    >
+      <option selected value="">--</option>
+      <option value="cat">Cat</option>
+      <option value="dog">Dog</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="col-4">
+    <!-- sex -->
+    <label for="inlineRadioButton">Sex:</label>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio1"
+        value=""
+        [(ngModel)]="params.filter.sex"
+        (change)="getPets()"
+      />
+      <label class="form-check-label" for="inlineRadio1">Any</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio2"
+        value="f"
+        [(ngModel)]="params.filter.sex"
+        (change)="getPets()"
+      />
+      <label class="form-check-label" for="inlineRadio2">Female</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio3"
+        value="m"
+        [(ngModel)]="params.filter.sex"
+        (change)="getPets()"
+      />
+      <label class="form-check-label" for="inlineRadio3">Male </label>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <!-- sort by -->
+    <label class="col-sm-2 col-form-label" for="inlineFormCustomSelect"
+      >Sort by:
+    </label>
+    <select
+      class="form-select"
+      id="inlineFormCustomSelect"
+      name="categorySelect"
+      [(ngModel)]="params.sort"
+      (change)="getPets()"
+    >
+      <option selected value="">--</option>
+      <option value="name">Name</option>
+      <option value="size_ks">Size kg</option>
+    </select>
+  </div>
+</div>
+
+<!-- prikaz adoption -->
+<div class="row">
+  <div class="col-3" *ngFor="let pet of pets.results">
+    <app-pet-item [pet]="pet"></app-pet-item>
+  </div>
+</div>
